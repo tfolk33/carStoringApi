@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Dict
 import json
 
@@ -13,8 +13,8 @@ with open("listings.json", "r") as f:
     LISTINGS = json.load(f)
 
 class VehicleRequest(BaseModel):
-    length: int
-    quantity: int
+    length: int = Field(..., gt=0, description="Length must be a positive integer greater than 0")
+    quantity: int = Field(..., gt=0, description="Length must be a positive integer greater than 0")
     width: int = 10
 
 @app.post("/")
