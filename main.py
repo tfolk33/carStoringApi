@@ -14,7 +14,7 @@ with open("listings.json", "r") as f:
 
 class VehicleRequest(BaseModel):
     length: int = Field(..., gt=0, description="Length must be a positive integer greater than 0")
-    quantity: int = Field(..., gt=0, description="Length must be a positive integer greater than 0")
+    quantity: int = Field(..., gt=0, description="Quantity must be a positive integer greater than 0")
     width: int = 10
 
 @app.post("/")
